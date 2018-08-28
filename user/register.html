@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">-->
+    <title>国际学校四库全书-注册</title>
+    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/outCSS/verify.css">
+    <link href="../assets/css/public.css?v=1.0.2" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/layer/3.1.0/theme/default/layer.css" rel="stylesheet">
+     <link rel="stylesheet" href="../assets/css/visible/visPublic.css?v=1.0.2">
+    <link rel="stylesheet" href="../assets/css/advice/advice.css?v=0816">
+    <style>
+        #registerTable{height:1200px;}
+        #nsiImg{margin-top:200px;margin-bottom: 60px;}
+        .instruction li {list-style: none;padding: 2px 0;}
+        @media screen and (max-width: 768px) {
+            #phoneStyle{  margin-top:0px; }
+            #registerTable{height:910px;}
+            #nsiImg{margin-top:20px;}
+        }
+        .click-next:hover{
+            text-decoration: none;
+        }
+        .agreement:hover{
+            color:red !important;
+        }
+        .alert-danger{
+            width: 365px;
+            margin-left: 77px;
+        }
+        #warn{
+            margin-left: 140px;
+            width: 130px;
+            height: 30px;
+            line-height: 3px;
+            background-color: #efad4d;
+            color:#fff;
+        }
+        .input-box{
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin-top: 10px;
+            margin-left:66px;
+            width: 360px;
+            outline: none;
+            font-size: 18px;
+            color: #666;
+            height:40px;
+        }
+        .item{
+            margin-left:70px;
+        }
+        .item input{
+            width: 70px;
+            font-size: 14px;
+            height: 30px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin-left:5px;
+            outline: none;
+        } 
+        .item2{
+            margin-left: 75px;
+            margin-top: -36px;
+            display:none;
+            border: 1px solid #9c9c9c;
+            width:390px;
+            border-top-width: 0px;
+            
+        }
+        hr{
+            width: 319px;
+            height: 1px;
+            background-color: #9c9c9c;
+            margin-left: 69px;
+        }
+        .item2 input{
+            width: 65px;
+            font-size: 14px;
+            height: 30px;
+            background-color: #fff;
+            margin-left: 8px;
+            margin-top: -10px;
+            margin-bottom: 12px;
+            border: 1px solid #9c9c9c;
+            outline: none;
+        } 
+        .item2 input:hover{
+            color:#6495C6;
+        }
+        .change{
+            background-color: #6495C6 !important;
+            color: #fff;
+            border:1px solid #9c9c9c !important;
+            border-bottom: 1px solid #fff !important;
+            padding-bottom: 30px;
+            padding-top: 3px;
+        }
+        .change2{
+            color: #cdc7c7;
+        }
+        .change3{
+            background-color: #6495C6 !important;
+            color: #fff;
+        }
+        input::-webkit-input-placeholder{
+            font-size: 16px;
+        }
+        .box{
+            box-shadow: 0px 0px 8px 5px #ede8e8;
+            border: 1px solid #ede8e8;
+            border-radius: 10px;
+            width: 638px;
+            margin: 40px auto;
+            padding-left: 62px;
+        }
+        .top{
+            margin-top:55px;
+        }
+        .bottom{
+            margin-bottom:55px;
+        }
+        input[disabled]{
+            background-color: #fff;
+        }
+        .borderBottom05,.visBorderBottom05{
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+<!--头部-->
+<!--#include virtual="../module/nav02.html" -->
+    <div class="box">
+        <form class="form-horizontal form" role="form" id="registerFormID" name="myform">
+            <div class="form-group top" id="infoID01">
+                <div class="alert alert-danger text-center">* 部分企业邮箱可能接受不到邮件，<br/>可用个人邮箱注册</div>
+            </div>
+            <div class="form-group" id="MailDivID">
+                <div class="col-lg-6 col-md-6 col-sm-6 back">
+                    <input type="email" id="EmailID" onblur="mailCheck()" name="Email" placeholder="请输入邮箱账号" class="input-box"/>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <span id="mailRegisterErr" class="hide" style="color:red;"><h5 class="alert alert-danger" id="warn">邮箱已被注册</h5></span> <span id="MailFormErr" class="hide" style="color:red;"><h5 class="alert alert-danger" id="warn">邮箱格式不正确</h5></span></div>
+            </div>
+            <div class="form-group" id="nameForm">
+                <div class="col-lg-6 col-md-6 col-sm-6 back">
+                    <input type="text" id="NameID" onblur="nameCheck()" name="Name" placeholder="请输入姓名" class="input-box"/>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <span id="nameErr" class="hide" style="color:red;"><h5 class="alert alert-danger" id="warn">姓名不能为空</h5></span> </div>
+            </div>
+            <div class="form-group" id="instutionForm">
+                <div class="col-lg-6 col-md-6 col-sm-6 back">
+                    <input type="text" id="companyID" onblur="instutionCheck()" name="company" placeholder="请输入所属机构" class="input-box"/>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <span id="instutionErr" class="hide" style="color:red;"><h5 class="alert alert-danger" id="warn">机构不能为空</h5></span> </div>
+            </div>
+            <div class="form-group" id="jobForm">
+                <div class="col-lg-6 col-md-6 col-sm-6 back">
+                    <input type="text" id="positionID" onblur="jobCheck()" name="position" placeholder="请输入职位" class="input-box"/>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <span id="jobErr" class="hide" style="color:red;"><h5 class="alert alert-danger" id="warn">职位不能为空</h5></span> </div>
+            </div>
+            <!-- 分类 -->
+            <div class="form-group" id="jobClassify">
+                <div class="col-lg-6 col-md-6 col-sm-6 back">
+                    <input type="text" id="classifyID" onblur="classifyCheck()" name="position" placeholder="请选择公司/职位分类" class="input-box"/>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <span id="classifyErr" class="hide" style="color:red;"><h5 class="alert alert-danger" id="warn">分类不能为空</h5></span> </div>
+            </div>
+            <div class="form-group">
+                <div class="item">
+                    <input type="button" id="internationSchool" style="cursor:hand" value="国际学校">
+                    <input type="button" class="company" style="cursor:hand" onclick="javascript:Insert02('媒体公司;')" value="媒体公司">
+                    <input type="button" class="company" style="cursor:hand" onclick="javascript:Insert02('教育公司;')" value="教育公司">
+                    <input type="button" class="company" style="cursor:hand" onclick="javascript:Insert02('投资公司;')" value="投资公司">
+                    <input type="button" class="company" style="cursor:hand" onclick="javascript:Insert02('其他公司;')" value="其他公司">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="item2">
+                    <hr>
+                    <input type="button" style="cursor:hand" onclick="javascript:Insert02('校长;')" value="校长">
+                    <input type="button" style="cursor:hand" onclick="javascript:Insert02('教学管理;')" value="教学管理">
+                    <input type="button" style="cursor:hand" onclick="javascript:Insert02('升学指导;')" value="升学指导">
+                    <input type="button" style="cursor:hand" onclick="javascript:Insert02('教师助教;')" value="教师助教">
+                    <input type="button" style="cursor:hand" onclick="javascript:Insert02('后勤运营;')" value="后勤运营"><br>
+                    <input type="button" style="cursor:hand" onclick="javascript:Insert02('市场招生;')" value="市场招生">
+                    <input type="button" style="cursor:hand" onclick="javascript:Insert02('人力资源;')" value="人力资源">
+                </div>
+            </div>
+            <!-- 分类结束 -->
+            <div class="form-group" id="telForm">
+                <div class="col-lg-6 col-md-6 col-sm-6 back">
+                    <input type="tel" id="phoneID" onblur="telCheck()" placeholder="请输入手机号码" class="input-box"/>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <span id="telErr" class="hide" style="color:red;"><h5 class="alert alert-danger" id="warn">输入正确手机号</h5></span> </div>
+            </div>
+            <div class="form-group" id="pwdForm01">
+                <div class="col-lg-6 col-md-6 col-sm-6 back">
+                    <input type="password" id="PasswdID01" onblur="pwdCheck()" placeholder="请输入密码" class="input-box"/>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <span id="pwdErr01" class="hide" style="color:#999"><h5 class="alert alert-danger" id="warn">密码至少为六位</h5></span> </div>
+            </div>
+            <div class="form-group" id="pwdForm02">
+                <div class="col-lg-6 col-md-6 col-sm-6 back">
+                    <input type="password" id="PasswdID02" onblur="pwdSameCheck()" placeholder="请确认密码" class="input-box"/>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <span id="pwdErr02" class="hide" style="color:red"><h5 class="alert alert-danger" id="warn">密码不一致</h5></span> </div>
+            </div>
+            <div class="form-group">
+                <div  id="mpanel4" style="margin-left:80px;">
+                </div>
+            </div>
+
+            <div id="infoDiv" class="form-group bottom" >
+                <label  class="col-lg-3 col-md-3 col-sm-3 control-label"></label>
+                <a class="click-next" href="../other/instruction.html#menu01" style="position: relative;right:52px;color:#93999F;">点击"下一步",即表示您同意并愿意遵守新学说<span class="agreement" style="color:#337ab7;">《用户协议》</span></a>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <button type="button" id="submitFromID" class="btn btn-primary form-control" style="position:relative;left:120px;top:10px;z-index: 10;">下一步</button>
+                </div>
+            </div>
+        </form>
+    </div>
+       <!--#include virtual="../module/advice.html" -->
+                    
+    
+
+
+
+<!-- <script src="../assets/js/jquery-1.11.1.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script> -->
+
+<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../assets/js/outJS/verify.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<!-- <script src="https://cdn.bootcss.com/verify/0.0.1/verify.min.js"></script> -->
+<script src="../assets/js/config.js"></script>
+<!-- <script src="../assets/js/jquery.cookie.js"></script> -->
+<script src="../assets/js/public.js?v=1.0.3"></script>
+<script src="../assets/js/user/register.js?v=0814"></script>
+<script src="../assets/js/visible/visible.js"></script>
+<script src="../assets/js/advice/advice.js?v=0816"></script>
+<script src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+</div>
+</body>
+</html>

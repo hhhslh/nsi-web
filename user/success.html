@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>恭喜您！注册成功</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_746810_l8b3yijvfo.css">
+</head>
+<style>
+	.all-box {
+        background-color: #f4f0ed;
+    }
+    .box {
+        padding: 40px;
+    }
+    .suc-box {
+        background-color: #fff;
+        padding: 10px 20px 20px;
+    }
+    .content{
+    	text-align: center;
+    }
+    .content>p{
+		font-size: 25px;
+    }
+    .content>p .register-suc{
+    	font-size: 40px;
+        color: #09c609;
+        margin-right: 10px;
+        position: relative;
+        top:5px;
+    }
+    .content img{
+    	margin-top:20px;
+    }
+    .word{
+    	background-color: #f6f6f6;
+        border-radius: 4px;
+        padding: 15px 10px 10px;
+        margin-top:20px;
+    }
+    .word p{
+    	font-size: 20px;
+    	color:#666;
+    }
+    .word button{
+		border: none;
+	    padding: 5px 10px;
+	    border-radius: 4px;
+	    margin-bottom: 10px;
+	    background-color: #337ab7;
+	    margin-left: 45px;
+	    margin-top:10px;
+    }
+    .word button a{
+    	color:#fff;
+    	font-size: 16px;
+    }
+    .word-3 p.title{
+    	font-size: 14px;
+    	color:#666;
+    }
+    .word-3 p.content{
+    	font-size: 12px;
+    	color:#a19b9b;
+    	text-align: left;
+    	text-indent: 25px;
+    }
+	@media (max-width:768px) {
+	    .box {
+	        padding: 20px 10px;
+	    }
+	    .suc-box {
+	        background-color: #fff;
+	        padding: 5px 10px 15px;
+	        margin-bottom: 10px;
+	    }
+	    .content>p{
+	    	margin-bottom:10px;
+	    	font-size: 18px;
+	    }
+	    .content>p .register-suc{
+	    	font-size: 30px;
+	        margin-right: 10px;
+	        position: relative;
+	        top:4px;
+	    }
+	    .content img{
+	    	margin-top:0;
+	    }
+	    .word{
+	        margin-top:20px;
+	    }
+	    .word p{
+	    	font-size: 15px;
+	    	text-align: center;
+	    }
+	    .word-3 p.content{
+	    	font-size: 12px;
+	    }
+	    .btn-cen{
+	    	text-align: center;
+	    }
+	    .btn-cen button{
+			padding:0 4px;
+			margin-left:0;
+		}
+	    .btn-cen button a{
+	    	font-size: 12px;
+	    }
+		
+	}
+</style>
+<body>
+
+	<div class="all-box">
+		<div class="box">
+			<div class="suc-box">
+				<div class="content">
+					<p><span class="iconfont icon-duigou register-suc"></span>恭喜您，注册成功!</p>
+					<img src="http://nsi.oss-cn-zhangjiakou.aliyuncs.com/nsi-pc/banner00.jpg" alt="" class="img-responsive">
+					<div class="word">
+						<p>恭喜您已经成功注册新学说！</p>
+						<p>欢迎您成为新学说的用户，现在您可以登陆:</p>
+						<div class="btn-cen">
+							<button><a href="http://data.xinxueshuo.cn" target="_blank" class="btn btn-block  pulse infinite">新学说在线四库全书</a></button>
+							<button><a href="http://class.xinxueshuo.cn" target="_blank" class="btn btn-block  pulse infinite">新学说国际教育研究院-在线课堂</a></button>
+						</div>
+					</div>
+					<div class="word word-3">
+						<p class="title">关于新学说</p>
+						<p class="content text-left">新学说(NewSchool Insight)是由国际学校资深专家共同打造的国际学校服务平台。旗下有新学说传媒和新学说国际教育研究院两大品牌。为国际学校提供行业最新资讯，会议组织，海外考察；研究报告，行业数据库；学校投建，运营管理，品牌管理，人才培养等专业咨询服务。自成立以来一直致力于中国国际学校行业研究。到目前为止，新学说已在自有媒体上发表了近千篇行业原创文章，十多本深度行业报告，并为多家学校提供了详细的市场、运营、建设方案，受到业内人士和单位的高度认可。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+			
+</body>
+</html>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+	$(function(){
+		var height = $(window).height()
+		$(".all-box").css("min-height", height)
+	})
+</script>

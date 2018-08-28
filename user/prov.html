@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">-->
+    <title>国际学校四库全书-注册</title>
+
+    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/outCSS/verify.css">
+     <link href="../assets/css/public.css?v=1.0.2" rel="stylesheet">
+
+     <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/layer/3.1.0/theme/default/layer.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/advice/advice.css">
+    <style>
+        .box{
+            width:601px;
+            box-shadow: 0px 0px 8px 5px #ede8e8;
+            border: 1px solid #ede8e8;
+            border-radius: 10px;
+        }
+        .btns{
+            margin-left: 145px;
+            /*margin-bottom:40px;*/
+        }
+        .btns input{
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-right:10px;
+        }
+        .btns a{
+            background-color: #337ab7;
+            color: #fff;
+            padding: 4px 20px;
+            border-radius: 4px;
+        }
+        .test{
+            width:215px;
+            margin-right:10px;
+        }
+        .go-login{
+            width:215px;
+            margin-left:10px;
+        }
+        .bottom {
+            margin: 20px 20px 5px 20px;
+        }
+        .top{
+            margin: 5px 20px 10px 20px;
+        }
+        #prove{
+            width: 80px;
+            height: 34px;
+            line-height: 26px;
+            position: relative;
+            left: 205px;
+            top:-33px;
+        }
+        .borderBottom05{
+            border-bottom: none;
+        }
+        h3{
+            text-align: center;
+            margin-top:30px;
+        }
+    </style>
+</head>
+<body>
+<!--头部-->
+<!--#include virtual="../module/nav02.html" -->
+<div class="container box" style="margin-top:3%;">
+    <div class="row">
+        <h3>请检查您的邮箱，填写注册激活码</h3>
+        <div class="form-group bottom">
+            <div class="alert alert-success ">
+                <h4>收不到邮件怎么办？</h4>
+                <p>1、部分企业或学校的邮箱可能会拦截邮件，您可以使用其他个人邮箱重新注册;</p>
+                <p>2、如一直未能收到邮件，请点击页面右下角“意见反馈”告诉我们，或致电我们 的，电话号码：010-52468286；</p>
+                
+            </div>
+        </div>
+        <div class="form-group top">
+            <div class="alert alert-info ">
+                <div class="instruction" style="padding-left:10px;">
+                    <h4>用户须知</h4>
+                    <p>1、提交信息 <br> 您在新学说每次提交数据时，不必填完所有的表单，但是您提交的有效数据越多，在我们审核通过之后会获得更多的积分，来提升您的用户等级。
+                    <p>2、反馈信息 <br> 
+                     您可以在页面右下角的“意见反馈”中，反馈您发现的信息错误，工作人员会及时修正。</p>
+                    <p>3、查询信息 <br> 
+                     新学说国际学校四库全书对所有注册用户开放，您可以查阅数据。同时新学说提供定制化的数据统计分析服务。</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div  class="btns" style="margin-top:30px">
+                <!-- <a type="button" class="btn btn-primary form-control test" href="" id="toVerify" target="_blank">去邮箱验证</a> -->
+                <!-- <a type="button" class="btn btn-primary form-control go-login" href="../user/login.html" target="_blank">已验证，去登录</a> -->
+                <!-- <a type="button" href="" id="toVerify" target="_blank">去邮箱验证</a> -->
+                <!-- <input type="text" placeholder="请输入邮箱收到的验证码" class="code"> -->
+                <div class="input-group code-box">
+                    <input type="text" placeholder="请输入邮箱收到的验证码" class="code form-control" style="border-radius: 4px;">
+                </div>
+                <a type="button"  class="btn btn-primary form-control" id="prove">验证</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--#include virtual="../module/advice.html" -->
+
+<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../assets/js/outJS/verify.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/public.js?v=1.0.3"></script>
+<script src="../assets/js/user/register.js?v=0814"></script>
+
+<script src="../assets/js/visible/visible.js"></script>
+<script src="../assets/js/advice/advice.js"></script>
+
+<script>
+//获取邮箱跳转地址
+getEmailurl()
+</script>
+
+</div>
+</body>
+</html>
