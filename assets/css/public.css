@@ -25,7 +25,9 @@ li{list-style: none;}
     color:#999;
 }
 input.choose{
-    margin-left:15px;
+    margin-left:23px;
+    position: relative;
+    top: 3px;
 }
 header{padding-bottom: 50px;}
 

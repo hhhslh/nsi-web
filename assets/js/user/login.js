@@ -102,6 +102,7 @@ $("#username,#password").blur(function(){
     }
 })
 
+
 //显示图形验证码
 $('#username,#password').focus(function() {
     $('#mpanel4').removeClass('hide')
@@ -141,4 +142,5 @@ $('#mpanel4').slideVerify({
 $("#ced").click(function(){
     return false;
 }) 
-   
+
+

@@ -21,6 +21,26 @@ window.onload = function(){
 	  }
 	}
 
+
+
+
+
+	//固定导航栏
+	$(document).ready(function() {
+	    var navOffset=$("#topbar").offset().top;
+	    $(window).scroll(function(){
+	        var scrollPos=$(window).scrollTop();
+	        if(scrollPos >=navOffset){
+	            $("#topbar").addClass("fixed");
+	            $("#banner").addClass("full");
+	        }else{
+	            $("#topbar").removeClass("fixed");
+	            $("#banner").removeClass("full");
+	        }
+	    });
+	});
+
+
 	//意见反馈按钮
 	$('.box-feed').on('click', function(){
 		window.open('http://data.xinxueshuo.cn/nsi/user/feedback.html');
@@ -142,7 +162,7 @@ window.onload = function(){
 	    content.push("类型：" + prop[i])
 	    content.push("学制：" + sys[i])
 	    content.push("国际课程：" + cour[i]+'</div>')
-	    content.push("<a href='http://data.xinxueshuo.cn/nsi/school/detail.html?School_name= " + kk[i] + "&whereFrom=search'>查看详情</a>");
+	    content.push("<a target='_blank' href='http://data.xinxueshuo.cn/nsi/school/detail.html?School_name= " + kk[i] + "&whereFrom=search'>查看详情</a>");
 
 	    var infoWindow = new AMap.InfoWindow({
 	        isCustom: true,  //使用自定义窗体

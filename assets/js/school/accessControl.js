@@ -85,7 +85,7 @@ function advanceSearch02(msg) {
                                 'system': eduSystem,
                                 'course': course,
                                 'fondTime': buildSchoolTime,
-                                'pageNum': 1,
+                                'pageNum': obj.curr,
                                 'pageSize': 20
                             }
                             // if (data.countAllRS != 0) {
