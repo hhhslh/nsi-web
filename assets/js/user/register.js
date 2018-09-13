@@ -7,7 +7,9 @@
 //     });
 // }
 // initPreventNext();
-
+$(".upload").click(function(){
+    $(".picBoxBg").css('display','block')
+})
 var checkMailResult = null;
 var nameCheckResult = null;
 var instutionCheckResult = null;
@@ -209,7 +211,7 @@ function pwdSameCheck() {
         return pwdSameCheckResult;
     }
 }
-
+$(".headImg img").attr('src','https://nsi.oss-cn-zhangjiakou.aliyuncs.com/nsi-user/samplePic/eg04.png')
 //第一个下一步
 function nextStep01(){
     var emailValue = $("#EmailID").val();
@@ -219,6 +221,7 @@ function nextStep01(){
     var phoneValue = $('#phoneID').val();
     var pwdValue = $('#PasswdID01').val();
     var typeValue = $('#classifyID').val()
+    var portraitValue = $(".headImg img").attr('src')
     $.ajax({
         type: "post",
         data:{
@@ -228,10 +231,12 @@ function nextStep01(){
             'userOrganization':organizationValue,
             'userPosition':jobValue,
             'userPhone':phoneValue,
-            'registerType':typeValue
+            'registerType':typeValue,
+            'userPortrait': portraitValue
         },
         url: changeUrl.address + '/user/register.do',
         success:function(msg){
+
             console.log(msg)
             if (msg.code == 0) {
                 window.location.href="../user/prov.html"

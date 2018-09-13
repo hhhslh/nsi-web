@@ -22,10 +22,18 @@ $(function() {
         dataType :   "jsonp", //数据类型为jsonp  
         jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
         success :   function(msg) {
-            // console.log(msg)
+            for (var i = 0; i < msg.length; i++) {
+                var  imgSrc;
+                if(msg[i].Institution_logo == 0){
+                    imgSrc = msg[i].Institution_logo ? '../assets/img/schoolNoPic.png'  : changeUrl.imgAddress + msg[i].Institution_logo;
+                }else{
+                    imgSrc = msg[i].Institution_logo ? changeUrl.imgAddress + msg[i].Institution_logo  :'../assets/img/schoolNoPic.png' ;
+                }
+            }
+                // console.log(msg)
                 // var imgSrc = msg[0].Institution_logo ? 'http://'+changeUrl.imgAddress+msg[0].Institution_logo : '../assets/img/schoolNoPic.png';
             // var imgSrc = msg[0].Institution_logo ? (msg[0].Institution_logo != 0 ? 'http://' + changeUrl.imgAddress + msg[0].Institution_logo : '../assets/img/schoolNoPic.png') : '../assets/img/schoolNoPic.png';
-                var imgSrc = msg[0].Institution_logo ?  changeUrl.imgAddress + msg[0].Institution_logo : '../assets/img/schoolNoPic.png';
+                // var imgSrc = msg[0].Institution_logo ?  changeUrl.imgAddress + msg[0].Institution_logo : '../assets/img/schoolNoPic.png';
             $('#institutionLogo').attr('src', imgSrc)
 
             $('#Name').text(zeroToEmpty(msg[0].Name))

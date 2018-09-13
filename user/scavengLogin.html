@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新学说账号与微信绑定</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.css" rel="stylesheet">
+	<link rel="stylesheet" href="../assets/css/user/set1.css">
+</head>
+<style>
+	.input__label--hoshi-color-1::after{
+        border-color: #337ab7 !important;
+        border-width: 3px;
+    }
+    .input{
+    	width: calc(100% - 14em) !important;
+    }
+    .modal-footer a{
+    	margin-right:10px;
+    }
+    .toast-center-center {
+	   top: 50%;
+	   left: 50%;
+	   margin-top: -25px;
+	   margin-left: -150px;
+	 }
+</style>
+<body>
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="margin-top:100px;">
+			<div class="modal-content" style="width:470px;">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-right:20px;margin-top: 20px;">&times;</button>
+				<div style="margin-left: 140px;margin-top: 40px;">
+					<img src="../assets/img/user/bind.png" alt="" class="img-responsive" style="height:105px;">
+				</div>
+				<div style="margin-top:12px">
+					<h4 class="modal-title" id="myModalLabel" style="text-align: center;">新学说账号与微信绑定</h4>
+				</div>
+				
+				<div class="modal-body" style="top:-15px;">
+					<section class="content" style="text-align: center">
+                        <div class="form-group">
+                            <span class="input input--hoshi">
+                                <input class="input__field input__field--hoshi" type="text" id="username" name="username" style="font-size: 15px;font-weight: 2;margin-bottom:10px;margin-top:25px;"/>
+                                <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="username">
+                                    <span class="input__label-content input__label-content--hoshi glyphicon glyphicon-user" style="font-size: 16px;"><span class="email" style="position: relative;top: -2px;">&nbsp;邮&nbsp;箱</span></span>
+                                </label>
+                            </span>
+                        </div>
+                        <div class="form-group" style="position: relative;top: -45px;">
+                            <span class="input input--hoshi">
+                                <input class="input__field input__field--hoshi" type="password" id="password" name="pwd" style="font-size: 15px;font-weight: 2;margin-bottom:10px;margin-top:25px;"/>
+                                <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="password">
+                                    <span class="input__label-content input__label-content--hoshi glyphicon glyphicon-list-alt" style="font-size: 16px;"><span class="pwd" style="position: relative;top:-2px;">&nbsp;密&nbsp;码</span></span>
+                                </label>
+                            </span>
+                        </div>
+                    </section>
+				</div>
+				<div style="text-align: center;position: relative;top: -70px;">
+					<button type="button" id="bind" class="btn btn-primary" style="width:248px;">立即绑定</button>
+				</div>
+				<div style="text-align: center;position: relative;top:-45px;">
+					<a href="./register.html" id="register" target="_blank" style="margin-right: 10px;">立即注册</a>
+					<span>|</span>
+					<a href="./password.html" id="forgetpw" target="_blank" style="margin-left: 10px;">忘记密码</a>
+				</div>	
+			</div>
+		</div>
+	</div>
+	<!-- 模态框（Modal）End -->
+
+	<!-- 加载动画 -->
+	<!--#include virtual="../module/weixinLoading.html" -->
+</body>
+</html>
+
+<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>   
+<script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+<script src="../assets/js/config.js"></script>
+<script>
+
+	//获取url地址问号后面部分
+	function getQueryStringArgs() {
+	    var qs = location.search.length > 0 ? location.search.substring(1) : '',
+	        args = {},
+	        items = qs.length ? qs.split('&') : [],
+	        item = null,
+	        name = null,
+	        value = null,  
+	        i = 0,
+	        len = items.length;
+	    for (i = 0; i < len; i++) {
+	        item = items[i].split('=');
+	        name = decodeURIComponent(item[0]);
+	        value = decodeURIComponent(item[1]);
+	        name = item[0];
+	        value = item[1];
+	        if (name.length) {
+	            args[name] = value;
+	        }
+	    }
+	    return args;
+	}
+
+	var args = getQueryStringArgs(),
+	    code = decodeURIComponent(args['code'])//获取code
+	    openId = ''
+
+	// 发送code,返回openId
+	function setCode() {
+	    $.ajax({
+	        type : "get",
+	        url: changeUrl.address + '/user/WechatGetOpenId.do',
+	        data: {
+	            code: code
+	        },  
+	        success : function(msg) {
+            	openId = msg.data
+            	setUserInfo() 
+	        },
+	    })
+	}
+	setCode()
+
+	//发送openId,返回用户信息，登录成功
+	function setUserInfo() {
+	    $.ajax({
+	        type : "get",
+	        url: changeUrl.address + '/user/WechatLogin.do',
+	        data: {
+	            OpenId: openId
+	        },  
+	        success : function(msg) {
+	        	if(msg.code == 0){
+	        		toastr.options.positionClass = 'toast-center-center';
+	        		toastr.success('登录成功');
+	        		$.cookie('usertitle', msg.data.memberSign, { expires: 1, path: '/' });
+                    $.cookie('username', msg.data.username, { expires: 1, path: '/' });
+                    $.cookie('User_TureName', msg.data.userTurename, { expires: 1, path: '/' });
+                    $.cookie('userVerifyCode', msg.data.userRegistercode, { expires: 1, path: '/' });
+                    $.cookie('userId', msg.data.id, { expires: 1, path: '/' });
+                    setTimeout(function(){
+                    	window.location.href='../other/index.html'
+                    },2000)
+	        	}else{
+	        		alert('未绑定账号，请先绑定')
+	        		$('#myModal').modal({'aria-hidden' : false})
+	        	}
+	        },
+	    });
+	}
+
+	//绑定
+	function bind(){
+		var username = $('#username').val()
+		var password = $('#password').val()
+		$.ajax({
+			type:'get',
+			url:changeUrl.address + '/user/WechatBinding.do',
+			data:{
+				UserName:username,
+				Password:password,
+				OpenId:openId
+			},
+			success: function(msg){
+				if(msg.code==0){
+					$('#myModal').modal('hide')
+					alert('微信绑定成功')
+					setUserInfo()
+				}else{
+					alert('账号或密码错误')
+				}
+				
+			}
+		})
+	}
+	//点击绑定
+	$("#bind").click(function(){
+		bind()
+	})
+
+	//判断是否给输入框添加样式 (引入css)
+	$("#username").click(function(){
+	    $('#username').parent('.input').addClass("input--filled")
+	})
+	$("#password").click(function(){
+	    $('#password').parent('.input').addClass("input--filled")
+	})
+
+	if($("#username,#password").val() == '' && $("#password").val() == ''){
+	     $('#username,#password').parent('.input').addClass("input--filled")
+	}else{
+	    $('#username,#password').parent('.input').removeClass("input--filled")
+	}
+
+	$("#username,#password").blur(function(){
+	    if($("#username").val() != '' || $("#password").val() != ''){
+	        $('#username,#password').parent('.input').addClass("input--filled")
+	    }else{
+	        $('#username,#password').parent('.input').removeClass("input--filled")
+	    }
+	})
+	
+	
+
+</script>

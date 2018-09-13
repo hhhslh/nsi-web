@@ -8,17 +8,23 @@
     <title>国际学校四库全书-登录</title>
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/public.css?v=0726">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_746810_l8b3yijvfo.css">
+    <link rel="stylesheet" href="../assets/css/public.css?v=0912">
     <link rel="stylesheet" href="../assets/css/outCSS/verify.css">
     <link rel="stylesheet" href="../assets/css/user/set1.css">
 </head>
 <style>
     .input__label--hoshi-color-1::after{
         border-color: #337ab7 !important;
+        border-width: 3px;
     }
     .input{
         width: calc(100% - 2px) !important;
         margin: 0 1em !important;
+    }
+    .pay-logo{
+        font-size: 16px;
+        color: #09c609;
     }
 </style>
 <body>
@@ -84,15 +90,19 @@
                     </div>
                     <button type="button" class="btn btn-primary form-control" id="login" data-toggle="modal" data-target="#myModal">登 录</button>
                 </form>
-                <input class="choose" type="checkbox" id="ced" checked />
-                <a href="../other/instruction.html#menu01" class="agreement">《新学说国际学校四库全书用户协议》</a>
-                <div style="float:right;padding-right:33px;margin-top: 5px">
+                <div style="position: relative;top:-5px;">
+                    <input class="choose" type="checkbox" id="ced" checked />
+                    <a href="../other/instruction.html#menu01" class="agreement">《新学说国际学校四库全书用户协议》</a>
+                </div>
+                
+                <div style="float:right;padding-right:20px;margin-top: 5px">
+                    <a href="https://open.weixin.qq.com/connect/qrconnect?appid=wxeec22e42c2dd116e&redirect_uri=http%3A%2F%2Fdata.xinxueshuo.cn%2Fnsi%2Fuser%2FscavengLogin.html&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect" class="iconfont icon-weixin2 pay-logo"></a>
+                    <span class="dotted">|</span>
                     <a href="register.html" style="font-weight: bold">免费注册</a>
                     <span class="dotted">|</span>
                     <a href="./password.html">忘记密码</a>
                     <span class="dotted">|</span>
                     <a href="feedback.html" target="_blank">意见反馈</a><br>
-                    
                     <!--<span class="dotted">|</span>-->
                     <!--<a href="http://data.xinxueshuo.cn/nsi-0.9/login.jsp" target="_blank">后台</a>-->
                 </div>
@@ -107,7 +117,7 @@
     </div>
 
     <!--微信登录-->
-    <div class="modal fade" id="myModal02" tabindex="-1" role="dialog" aria-labelledby="fastLoader" aria-hidden="true">
+    <!-- <div class="modal fade" id="myModal02" tabindex="-1" role="dialog" aria-labelledby="fastLoader" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -122,12 +132,12 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 </div>
             </div>
-            <!-- /.modal-content -->
+
         </div>
-        <!-- /.modal -->
+
     </div>
 
-
+ -->
 
     <!--模态框部分-->
     <!-- 模态框（Modal） -->
@@ -150,7 +160,7 @@
     <!--页脚-->
     <!--#include virtual="../module/footer.html" -->
     <!-- 模态框（Modal）邮箱没有验证-->
-    <div class="modal fade" id="emailNoPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel02" aria-hidden="true">
+    <!-- <div class="modal fade" id="emailNoPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel02" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -169,10 +179,8 @@
                 </button>
                 </div>
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
-    </div>
+    </div> -->
     <!-- /.modal -->
     <!-- 模态框（Modal）等待审核-->
     <div class="modal fade" id="waitForPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel03" aria-hidden="true">
@@ -197,6 +205,7 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+    <div id="login_container"></div>
     <!-- /.modal -->
     <!-- <script src="../assets/js/jquery-1.11.1.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script> -->
@@ -210,8 +219,7 @@
     <script src="../assets/js/config.js"></script>
     <script src="../assets/js/public.js"></script>
     <script src="../assets/js/user/login.js?v=0000821"></script>
-
-    <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+    <!-- <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script> -->
 
 </body>
 

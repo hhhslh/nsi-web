@@ -62,8 +62,10 @@ function getCookie() {
             jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
             success :   function(msg) {
                 // alert('成功')
+                console.log(msg)
                 console.log(msg.verifyResult);
                 if (msg.verifyResult < 0) {
+
                     alert('当前用户未登录，无法访问该页面')
                     window.location.href = "../user/login.html" //未登录，跳回登录页面
                     console.log($.cookie('usertitle'))
