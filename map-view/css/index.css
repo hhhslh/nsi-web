@@ -267,10 +267,27 @@ span {
     font-size: 11px;
 }
 .contter{
-    background-color: hsla(360, 100%, 60%, 0.6);
-    height: 4px; 
-    width: 4px; 
-    border: 0px solid hsl(180, 100%, 40%);
+    z-index: 10000;
+    background-color: hsla(0, 100%, 72%, 0.8);
+    height: 6px; 
+    width: 6px; 
+    border: 0px solid hsl(0, 0%, 0%);
     border-radius: 10px; 
-    box-shadow: hsl(180, 100%, 50%) 0px 0px 1px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    /*box-shadow: hsl(180, 100%, 50%) 0px 0px 1px;*/
 }
+.contter:hover{
+    background-color: hsla(213, 100%, 53%, 0.8);
+    height: 15px; 
+    width: 15px; 
+    border: 0px solid hsl(0, 0%, 0%);
+    border-radius: 10px; 
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+
+}
+
+
+
+
+
+
