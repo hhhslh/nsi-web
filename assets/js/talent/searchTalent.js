@@ -104,7 +104,7 @@ function generalSearch(obj) {
                     cont: 'pageDemo01', //分页容器的id
                     pages: totalPages, //总页数
                     skin: '#5FB878', //自定义选中色值
-                    //,skip: true //开启跳页
+                    skip: true,//开启跳页
                     jump: function(obj, first) {
                         $('#result').html('')
                         $('#loadgif').show()

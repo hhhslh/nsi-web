@@ -72,13 +72,13 @@ function advanceSearch02(msg) {
                         element = layui.element();
                     laypage({
                         cont: 'pageDemo01', //分页容器的id
-                        pages: data.data.total, //总页数
+                        pages: data.data.pages, //总页数
                         skin: '#5FB878', //自定义选中色值
-                        //,skip: true //开启跳页
+                        skip: true, //开启跳页
                         jump: function(obj, first) {
                             $('#innerWrap').html('')
                             $('#loadgif').show()
-                            $('#floatLayer').show() //遮罩层
+                            $('#floatLayer').show()
                             var data02 = {
                                 'properties': properties,
                                 'area': area,
@@ -173,9 +173,9 @@ function generalSearch03(msg) {
                     element = layui.element();
                 laypage({
                     cont: 'pageDemo01', //分页容器的id
-                    pages: data.data.total, //总页数
+                    pages: data.data.pages, //总页数
                     skin: '#5FB878', //自定义选中色值
-                    //,skip: true //开启跳页
+                    skip: true, //开启跳页
                     jump: function(obj, first) {
                         $('#innerWrap').html('')
                         $('#loadgif').show()
@@ -199,6 +199,7 @@ function generalSearch03(msg) {
             $('.gengeralSearchNum').text(data.data.total)
             $('.noData').css('display', 'none')
             $('.generalSearchResult').css('display', 'block')
+
         },
         error: function() {
             alert('请求数据失败！');
@@ -291,6 +292,9 @@ function accessData(fn) {
         }
     }
 }
+
+
+
 
 
 
