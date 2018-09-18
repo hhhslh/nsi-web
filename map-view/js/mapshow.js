@@ -317,15 +317,15 @@ window.onload = function(){
 	    });
 
 	    //feature被点击*****************************************************************************
-	    districtExplorer.on('featureClick', function(e, feature) {
-	    	var props = feature.properties;
+	    // districtExplorer.on('featureClick', function(e, feature) {
+	    // 	var props = feature.properties;
 
-	            //如果存在子节点
-	            if (props.childrenNum > 0) {
-	                //切换聚焦区域
-	                switch2AreaNode(props.adcode);
-	            }	        
-	    });
+	    //         //如果存在子节点
+	    //         if (props.childrenNum > 0) {
+	    //             //切换聚焦区域
+	    //             switch2AreaNode(props.adcode);
+	    //         }	        
+	    // });
 	    //*****************************************************************点击绘制后区域，绑定事件
 
 	    //外部区域被点击
@@ -333,23 +333,27 @@ window.onload = function(){
 
 	    //     alert('区域外点击');
 	    // });
-	    districtExplorer.on('outsideClick', function(e) {
+	    
 
-	        districtExplorer.locatePosition(e.originalEvent.lnglat, function(error, routeFeatures) {
 
-	            if (routeFeatures && routeFeatures.length > 1) {
-	                //切换到省级区域
-	                switch2AreaNode(routeFeatures[1].properties.adcode);
-	            } else {
-	                //切换到全国
-	                switch2AreaNode(100000);
-	            }
-	        }, 
-	        {
-	            levelLimit: 2
-	        });
-	        alert('区域外点击');
-	    });
+	    
+	    // districtExplorer.on('outsideClick', function(e) {
+
+	    //     districtExplorer.locatePosition(e.originalEvent.lnglat, function(error, routeFeatures) {
+
+	    //         if (routeFeatures && routeFeatures.length > 1) {
+	    //             //切换到省级区域
+	    //             switch2AreaNode(routeFeatures[1].properties.adcode);
+	    //         } else {
+	    //             //切换到全国
+	    //             switch2AreaNode(100000);
+	    //         }
+	    //     }, 
+	    //     {
+	    //         levelLimit: 2
+	    //     });
+	    //     alert('区域外点击');
+	    // });
 
 	    //绘制某个区域的边界
 	    function renderAreaPolygons(areaNode) {
@@ -450,7 +454,7 @@ window.onload = function(){
 		    });
 		}
 		//全国
-		map.setFitView(districtExplorer.getAllFeaturePolygons());//调整地图视野
+		// map.setFitView(districtExplorer.getAllFeaturePolygons());//调整地图视野
 		switch2AreaNode(100000);
 	});
 
