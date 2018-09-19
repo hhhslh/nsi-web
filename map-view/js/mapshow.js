@@ -22,9 +22,6 @@ window.onload = function(){
 	}
 
 
-
-
-
 	//固定导航栏
 	$(document).ready(function() {
 	    var navOffset=$("#topbar").offset().top;
@@ -45,6 +42,18 @@ window.onload = function(){
 	$('.box-feed').on('click', function(){
 		window.open('http://data.xinxueshuo.cn/nsi/user/feedback.html');
 	})
+
+	//确定点位置的回调函数
+	function geocoder_CallBack(data,school,id) {
+
+		var geocode = data.geocodes;
+		for (var i = 0; i < geocode.length; i++) {
+
+			setLnglat(id, geocode[i].location.getLng(), geocode[i].location.getLat());
+
+			addMarker(i, geocode[i],school);
+		}
+	}
 //*************************************************************************************
 	//初始化地图
 	var lnglat = [107.000923,31.675807];
@@ -101,6 +110,31 @@ window.onload = function(){
         },//success结束
     });//Ajax结束
 
+    //有新增学校时，向数据库提交新的经纬度
+    function setLnglat(id, lng, lat){
+    	$.ajax({
+    	  type : "post",
+    	  async: true,
+    	  traditional: true,
+    	  data: {//提交的参数
+    	      'schoolId': id,
+      	      'longitude': lng,
+    	      'latitude': lat
+    	  }, 
+    	  url: changeUrl.address + '/visualization/add.do', 
+    	  success: function(res) {
+
+    	      console.log(res.msg);
+    	  },
+
+    	  error: function() {
+    	      console.log('发生错误，请求数据失败！');
+    	      
+    	  }
+    	});
+    }
+
+
     function geocoder(name,school,id,callback) {
         var geocoder = new AMap.Geocoder({
             city: "100", //城市，默认：“全国”
@@ -115,17 +149,7 @@ window.onload = function(){
         });
     }
 
-    function geocoder_CallBack(data,school,id) {
-
-    	var geocode = data.geocodes;
-    	for (var i = 0; i < geocode.length; i++) {
-
-    		setLnglat(id, geocode[i].location.getLng(), geocode[i].location.getLat());
-
-    		addMarker(i, geocode[i],school);
-    	}
-    }
-
+    
 	function addMarker(i, n,school,id) {
 		var marker = new AMap.Marker({
 			map: map,
@@ -223,34 +247,7 @@ window.onload = function(){
 
 	}
 
-
-
-	function setLnglat(id, lng, lat){
-		$.ajax({
-		  type : "post",
-		  async: true,
-		  traditional: true,
-		  data: {//提交的参数
-		      'schoolId': id,
-	  	      'longitude': lng,
-		      'latitude': lat
-		  }, 
-		  url: changeUrl.address + '/visualization/add.do', 
-		  success: function(res) {
-
-		      console.log(res.msg);
-		  },
-
-		  error: function() {
-		      console.log('发生错误，请求数据失败！');
-		      
-		  }
-		});
-	}
-
-
-	
-	
+		
     var colors = [
     	'#9e9e9e', '#efc47e', '#f3ad6a', '#f7945d', '#f97b57', '#f66356', '#ee4d5a', "#3366cc", 
     	"#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", 
@@ -317,15 +314,15 @@ window.onload = function(){
 	    });
 
 	    //feature被点击*****************************************************************************
-	    districtExplorer.on('featureClick', function(e, feature) {
-	    	var props = feature.properties;
+	    // districtExplorer.on('featureClick', function(e, feature) {
+	    // 	var props = feature.properties;
 
-	            //如果存在子节点
-	            if (props.childrenNum > 0) {
-	                //切换聚焦区域
-	                switch2AreaNode(props.adcode);
-	            }	        
-	    });
+	    //         //如果存在子节点
+	    //         if (props.childrenNum > 0) {
+	    //             //切换聚焦区域
+	    //             switch2AreaNode(props.adcode);
+	    //         }	        
+	    // });
 	    //*****************************************************************点击绘制后区域，绑定事件
 
 	    //外部区域被点击
@@ -333,23 +330,27 @@ window.onload = function(){
 
 	    //     alert('区域外点击');
 	    // });
-	    districtExplorer.on('outsideClick', function(e) {
+	    
 
-	        districtExplorer.locatePosition(e.originalEvent.lnglat, function(error, routeFeatures) {
 
-	            if (routeFeatures && routeFeatures.length > 1) {
-	                //切换到省级区域
-	                switch2AreaNode(routeFeatures[1].properties.adcode);
-	            } else {
-	                //切换到全国
-	                switch2AreaNode(100000);
-	            }
-	        }, 
-	        {
-	            levelLimit: 2
-	        });
-	        alert('区域外点击');
-	    });
+
+	    // districtExplorer.on('outsideClick', function(e) {
+
+	    //     districtExplorer.locatePosition(e.originalEvent.lnglat, function(error, routeFeatures) {
+
+	    //         if (routeFeatures && routeFeatures.length > 1) {
+	    //             //切换到省级区域
+	    //             switch2AreaNode(routeFeatures[1].properties.adcode);
+	    //         } else {
+	    //             //切换到全国
+	    //             switch2AreaNode(100000);
+	    //         }
+	    //     }, 
+	    //     {
+	    //         levelLimit: 2
+	    //     });
+	    //     alert('区域外点击');
+	    // });
 
 	    //绘制某个区域的边界
 	    function renderAreaPolygons(areaNode) {
@@ -450,7 +451,7 @@ window.onload = function(){
 		    });
 		}
 		//全国
-		map.setFitView(districtExplorer.getAllFeaturePolygons());//调整地图视野
+		// map.setFitView(districtExplorer.getAllFeaturePolygons());//调整地图视野
 		switch2AreaNode(100000);
 	});
 
